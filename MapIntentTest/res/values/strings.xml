@@ -12,5 +12,7 @@
     <string name="test6">test6</string>
     <string name="test7">test7</string>
     <string name="test8">test8</string>
+    <string name="start_receiver">Start Receiver</string>
+    <string name="stop_receiver">Stop Receiver</string>
     
 </resources>

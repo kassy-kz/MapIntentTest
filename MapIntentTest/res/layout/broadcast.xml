@@ -6,13 +6,13 @@
     
     <Button 
         android:layout_width="match_parent"
-        android:text="Start Receiver"
+        android:text="@string/start_receiver"
         android:id="@+id/startReceiver"
         android:layout_height="wrap_content"
         />
     <Button 
         android:layout_width="match_parent"
-        android:text="Stop Receiver"
+        android:text="@string/stop_receiver"
         android:id="@+id/stopReceiver"
         android:layout_height="wrap_content"
         />
