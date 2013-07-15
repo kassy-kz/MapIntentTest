@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.RemoteException;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.ComponentName;
@@ -103,6 +104,15 @@ public class MainActivity extends Activity implements OnClickListener {
 
         break;
       case R.id.test7:
+        Log.i(TAG,"btnCallFunc pressed");
+        try{
+            if(mBinder != null){
+                mBinder.callFunction();
+            }
+        }catch(RemoteException e){
+            e.printStackTrace();
+        }
+
         break;
       case R.id.test8:
         break;
