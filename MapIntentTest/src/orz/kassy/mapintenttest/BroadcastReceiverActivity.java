@@ -1,11 +1,13 @@
 package orz.kassy.mapintenttest;
 
+import orz.kassy.mapintenttest.MainService.KeyEventSender;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.app.KeyguardManager;
@@ -85,9 +87,25 @@ public class BroadcastReceiverActivity extends Activity implements OnClickListen
             // インテントを受け取ったときの処理をここに記述
             Toast.makeText(context, "receive2 broadcast", Toast.LENGTH_LONG).show();
             Log.w(TAG,"Receive2 Broadcast and action = "+ intent.getAction());
-            Instrumentation ist = new Instrumentation();
-            ist.sendKeyDownUpSync(KeyEvent.KEYCODE_K);
+            // これはだめ
+//            Instrumentation ist = new Instrumentation();
+//            ist.sendKeyDownUpSync(KeyEvent.KEYCODE_K);
+            KeyEventSender sender = new KeyEventSender();
+            sender.execute("");
 
         }
     }
+    
+    public static class KeyEventSender extends AsyncTask<String, Integer, Integer> {
+      @Override
+      protected Integer doInBackground(String... params) {
+        while(true) {
+          Log.i(TAG,"keysync");
+          Instrumentation ist = new Instrumentation();
+          ist.sendKeyDownUpSync(KeyEvent.KEYCODE_K);
+          return null;
+        }
+      }
+    }
+
 }
